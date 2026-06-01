@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dtuh6ntlbfnb1"]
+
+[node name="Jogo supremo" type="Node2D" unique_id=1251421913]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1341676460]

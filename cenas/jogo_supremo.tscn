@@ -1,5 +1,63 @@
 [gd_scene format=3 uid="uid://dtuh6ntlbfnb1"]
 
-[node name="Jogo supremo" type="Node2D" unique_id=1251421913]
+[ext_resource type="Script" uid="uid://d3g8aqqhvihvd" path="res://Scripts/jogo_supremo.gd" id="1_ccsfs"]
+[ext_resource type="Texture2D" uid="uid://bgryq7eutcl5s" path="res://Recursos/Assets Godot Runner/background.png" id="1_gjqyr"]
+[ext_resource type="Texture2D" uid="uid://xfidmc68ls02" path="res://Recursos/Assets Godot Runner/foreground.png" id="2_ccsfs"]
+[ext_resource type="Texture2D" uid="uid://bdokr3ydpc5e8" path="res://Recursos/Assets Godot Runner/middleground2.png" id="3_nd263"]
+[ext_resource type="Texture2D" uid="uid://d11ume2m4jbvp" path="res://Recursos/Assets Godot Runner/middleground1.png" id="4_ndrev"]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1341676460]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mmnfe"]
+size = Vector2(1153, 96)
+
+[node name="Jogo supremo" type="Node2D" unique_id=1251421913]
+script = ExtResource("1_ccsfs")
+
+[node name="Fundo" type="Sprite2D" parent="." unique_id=1341676460]
+position = Vector2(0, -1.0000076)
+scale = Vector2(3.6000006, 3.1055555)
+texture = ExtResource("1_gjqyr")
+centered = false
+
+[node name="Fundo2" type="Sprite2D" parent="." unique_id=1951689629]
+position = Vector2(1152, 1.1920929e-07)
+scale = Vector2(3.6156254, 3.0944448)
+texture = ExtResource("1_gjqyr")
+centered = false
+
+[node name="Meio azul" type="Sprite2D" parent="." unique_id=1934562731]
+position = Vector2(576.5, 283.5)
+scale = Vector2(3.6156247, 3.15)
+texture = ExtResource("3_nd263")
+
+[node name="meio azul 2" type="Sprite2D" parent="." unique_id=909257384]
+position = Vector2(1727, 279.99997)
+scale = Vector2(3.59375, 3.111111)
+texture = ExtResource("3_nd263")
+
+[node name="meio preto" type="Sprite2D" parent="." unique_id=93085949]
+position = Vector2(577.50006, 277)
+scale = Vector2(3.6093748, 3.088889)
+texture = ExtResource("4_ndrev")
+
+[node name="meio preto2" type="Sprite2D" parent="." unique_id=1646898821]
+position = Vector2(1730, 279.00003)
+scale = Vector2(3.59375, 3.1333332)
+texture = ExtResource("4_ndrev")
+
+[node name="Chao" type="Sprite2D" parent="." unique_id=2135990233]
+position = Vector2(-1, 506)
+scale = Vector2(3.60625, 2.9531243)
+texture = ExtResource("2_ccsfs")
+centered = false
+
+[node name="Chao2" type="Sprite2D" parent="." unique_id=1198703499]
+position = Vector2(1143, 506)
+scale = Vector2(3.8999999, 2.9375002)
+texture = ExtResource("2_ccsfs")
+centered = false
+
+[node name="Chaofisico" type="StaticBody2D" parent="." unique_id=1615110604]
+
+[node name="Corpochao" type="CollisionShape2D" parent="Chaofisico" unique_id=633247344]
+position = Vector2(575.5, 601)
+shape = SubResource("RectangleShape2D_mmnfe")

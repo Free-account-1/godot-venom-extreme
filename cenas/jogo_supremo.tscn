@@ -2,15 +2,89 @@
 
 [ext_resource type="Script" uid="uid://d3g8aqqhvihvd" path="res://Scripts/jogo_supremo.gd" id="1_ccsfs"]
 [ext_resource type="Texture2D" uid="uid://bgryq7eutcl5s" path="res://Recursos/Assets Godot Runner/background.png" id="1_gjqyr"]
+[ext_resource type="Script" uid="uid://dp3lxik7uhcth" path="res://cenas/gerador_obstaculos.gd" id="2_2gshd"]
 [ext_resource type="Texture2D" uid="uid://xfidmc68ls02" path="res://Recursos/Assets Godot Runner/foreground.png" id="2_ccsfs"]
 [ext_resource type="Texture2D" uid="uid://bdokr3ydpc5e8" path="res://Recursos/Assets Godot Runner/middleground2.png" id="3_nd263"]
 [ext_resource type="Texture2D" uid="uid://d11ume2m4jbvp" path="res://Recursos/Assets Godot Runner/middleground1.png" id="4_ndrev"]
+[ext_resource type="Texture2D" uid="uid://brwkc41ihspxq" path="res://Recursos/Assets Godot Runner/player.png" id="6_ndrev"]
+[ext_resource type="Script" uid="uid://ject1m47nhmw" path="res://Scripts/character_body_2d.gd" id="6_t4383"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mmnfe"]
 size = Vector2(1153, 96)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t4383"]
+radius = 36.0
+height = 92.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4383"]
+atlas = ExtResource("6_ndrev")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gshd"]
+atlas = ExtResource("6_ndrev")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qb1e6"]
+atlas = ExtResource("6_ndrev")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4nx7"]
+atlas = ExtResource("6_ndrev")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agbl7"]
+atlas = ExtResource("6_ndrev")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opdfd"]
+atlas = ExtResource("6_ndrev")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wslat"]
+atlas = ExtResource("6_ndrev")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_88dac"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4383")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gshd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qb1e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4nx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agbl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opdfd")
+}],
+"loop": true,
+"name": &"andar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wslat")
+}],
+"loop": true,
+"name": &"pular",
+"speed": 5.0
+}]
+
 [node name="Jogo supremo" type="Node2D" unique_id=1251421913]
 script = ExtResource("1_ccsfs")
+
+[node name="Gerador Obstaculos" type="Node2D" parent="." unique_id=1747426018]
+position = Vector2(137, 515.00006)
+scale = Vector2(4.427083, 4.0625005)
+script = ExtResource("2_2gshd")
 
 [node name="Fundo" type="Sprite2D" parent="." unique_id=1341676460]
 position = Vector2(0, -1.0000076)
@@ -61,3 +135,18 @@ centered = false
 [node name="Corpochao" type="CollisionShape2D" parent="Chaofisico" unique_id=633247344]
 position = Vector2(575.5, 601)
 shape = SubResource("RectangleShape2D_mmnfe")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1630701316]
+script = ExtResource("6_t4383")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1518070138]
+position = Vector2(137, 499)
+shape = SubResource("CapsuleShape2D_t4383")
+
+[node name="corpo" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=714606556]
+texture_filter = 1
+position = Vector2(137, 515.00006)
+scale = Vector2(4.427083, 4.0625005)
+sprite_frames = SubResource("SpriteFrames_88dac")
+animation = &"andar"
+autoplay = "andar"
